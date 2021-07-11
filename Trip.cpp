@@ -8,8 +8,15 @@
 
 #include "Trip.h"
 
-Trip::Trip(std::string name, long double budget, long double warningLimit): name(name), budget(budget), balance(budget), warningLimit(warningLimit)
-{}
+Trip::Trip(std::string name, long double budget, long double warningLimit){
+    if(name.empty()) throw std::invalid_argument("Name cannot be empty");
+    if(budget < 1 || warningLimit < 1) throw std::invalid_argument("Budget and warning limit must be at least 1");
+    if(warningLimit > budget) throw std::invalid_argument("Warning limit cannot be greater than budget");
+    this->name = name;
+    this->budget = budget;
+    this->balance = budget;
+    this->warningLimit = warningLimit;
+}
 
 long double Trip::getBudget() {
     return budget;
