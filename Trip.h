@@ -26,6 +26,7 @@ private:
 public:
     /**
      * Constructs a trip with a specified budget, warning limit and name
+     * The balance is set equal to budget at initialization
      *
      * @param name the name of the trip
      * @param budget the total budget allocated for this trip
@@ -34,6 +35,33 @@ public:
      */
     Trip(std::string name, long double budget, long double warningLimit);
 
+    /**
+     * Gets the starting budget for the trip
+     *
+     * @return the initial budget for the trip
+     */
+    long double getBudget();
+
+    /**
+     * Gets the current balance
+     *
+     * @return the remaining balance for the trip
+     */
+    long double getBalance();
+
+    /**
+     * Gets the warning limit that was set for the trip
+     *
+     * @return the warning limit amount
+     */
+    long double getWarningLimit();
+
+    /**
+     * Gets the name of the trip
+     *
+     * @return the name of trip
+     */
+    std::string getName();
 };
 
 

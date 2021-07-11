@@ -7,3 +7,22 @@
  */
 
 #include "Trip.h"
+
+Trip::Trip(std::string name, long double budget, long double warningLimit): name(name), budget(budget), balance(budget), warningLimit(warningLimit)
+{}
+
+long double Trip::getBudget() {
+    return budget;
+}
+
+long double Trip::getBalance() {
+    return balance;
+}
+
+long double Trip::getWarningLimit() {
+    return warningLimit;
+}
+
+std::string Trip::getName() {
+    return name;
+}
