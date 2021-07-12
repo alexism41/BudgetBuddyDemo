@@ -96,7 +96,8 @@ public:
     /**
      * Adds an expense to the list of expenses for this trip
      *
-     * @param amount
+     * @param name the name of the expense
+     * @param amount the amount of the expense
      * @throws invalid_argument if name is empty or if {@code amount < 0}
      */
     void addExpense(std::string name, long double amount);

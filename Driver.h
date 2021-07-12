@@ -46,6 +46,15 @@ private:
      * @throws invalid_argument if {@code index < 0 || index >= trips.size()}
      */
     void displayTripMain(int index);
+
+    /**
+     * Gets user input for the name and amount of an expense and adds it
+     * to the current trip if valid
+     *
+     * @param index the index in the trips vector to add the expense to
+     * @throws invalid_argument if {@code index < 0 || index >= trips.size()}
+     */
+    void addExpense(int index);
 public:
     /**
      * Starts the driver and handles user interaction
