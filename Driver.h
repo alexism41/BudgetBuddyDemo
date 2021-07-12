@@ -14,10 +14,18 @@
 
 class Driver {
 private:
+    /** List of Trips for the current user **/
     std::vector<Trip> trips;
+    /** Flag to check if the driver is running **/
     bool running = false;
+    /**
+     * Displays main menu options to the user
+     */
     void displayMain();
 public:
+    /**
+     * Starts the driver and handles user interaction
+     */
     void start();
 
 
