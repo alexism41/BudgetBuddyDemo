@@ -22,6 +22,30 @@ private:
      * Displays main menu options to the user
      */
     void displayMain();
+
+    /**
+     * Displays a simple line of text to the user, text is left aligned by default
+     *
+     * @param message the text to be displayed to the user
+     * @param centered {@code true} to display centered text
+     */
+    static void displayMessage(std::string message, bool centered = false);
+
+    /**
+     * Handles the creation of a new trip by getting user input for the name, budget and warning limit
+     * and adds the trip to the list of current trips if it was successfully created.
+     * If the trip was created successfully it is then opened and presents user with the Trip main menu options
+     */
+    void createTrip();
+
+    /**
+     * Displays the trip main menu options for the trip at the desired index in the trips list
+     * and handles user input for the trip menu
+     *
+     * @param index the index in the trips vector to open
+     * @throws invalid_argument if {@code index < 0 || index >= trips.size()}
+     */
+    void displayTripMain(int index);
 public:
     /**
      * Starts the driver and handles user interaction
