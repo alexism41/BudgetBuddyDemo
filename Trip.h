@@ -17,13 +17,13 @@
 class Trip {
 private:
     /** Name of trip **/
-    const std::string name;
+    std::string name;
     /** Budget allocated for trip **/
-    const long double budget = 0;
+    long double budget = 0;
     /** Balance remaining for the trip **/
     long double balance = 0;
     /** Warning limit allocated for trip **/
-    const long double warningLimit = 0;
+    long double warningLimit = 0;
     /**
      * List of expenses for the trip.
      * Expenses will be stored as pairs, where the first value of the pair holds: the name of the expense

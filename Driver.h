@@ -63,6 +63,15 @@ private:
      * @throws invalid_argument if {@code index < 0 || index >= trips.size()}
      */
     void displayExpenses(int index);
+
+    /**
+     * Displays the list of trips in the trips vector if any and gathers user input for which
+     * trip is selected.
+     *
+     * @return the index of the trip selected by the user or -1 if trips is empty
+     */
+    int displayAllTrips();
+
 public:
     /**
      * Starts the driver and handles user interaction

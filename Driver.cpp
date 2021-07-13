@@ -21,23 +21,36 @@ void Driver::start() {
     do{
         displayMain();
         std::cin >> input;
+        std::cin.clear();
+        std::cin.ignore(1000,'\n');
+        int tripIndex;
         switch (input) {
             case '1':
-                displayMessage("CREATING A TRIP\n");
+                displayMessage("CREATING A TRIP:\n");
                 createTrip();
                 break;
             case '2':
-                displayMessage("DELETING A TRIP\n");
+                displayMessage("DELETING A TRIP:\n");
+                tripIndex = displayAllTrips();
+                if(tripIndex != -1)
+                    trips.erase(trips.begin()+tripIndex);
+                else
+                    displayMessage("There are currently no active trips");
                 break;
             case '3':
                 displayMessage("OPENING A TRIP\n");
+                tripIndex = displayAllTrips();
+                if(tripIndex != -1)
+                    displayTripMain(tripIndex);
+                else
+                    displayMessage("There are currently no active trips");
                 break;
             case '4':
                 displayMessage("EXITING\n");
                 running = false;
                 break;
             default:
-                displayMessage("ENTER VALID OPTION\n");
+                displayMessage("ENTER VALID OPTION\n", true);
                 break;
         }
 
@@ -58,7 +71,6 @@ void Driver::createTrip() {
     long double warningLimit;
 
     displayMessage("Enter the name of this Trip: ");
-    std::cin.ignore();
     std::getline(std::cin, name);
 
     displayMessage("Enter the budget for this Trip: ");
@@ -96,6 +108,8 @@ void Driver::displayTripMain(int index) {
         displayMessage("2. View Trip Expenses");
         displayMessage("3. Close Trip");
         std::cin >> input;
+        std::cin.clear();
+        std::cin.ignore(1000,'\n');
         switch (input) {
             case '1':
                 displayMessage("ADDING EXPENSE\n");
@@ -125,7 +139,6 @@ void Driver::addExpense(int index) {
     long double amount;
 
     displayMessage("Enter the name of this Expense: ");
-    std::cin.ignore();
     std::getline(std::cin, name);
 
     displayMessage("Enter the expense amount: ");
@@ -144,8 +157,30 @@ void Driver::displayExpenses(int index) {
     if(index < 0 || index >= trips.size()) throw std::invalid_argument("Invalid index entered");
     for(auto expense: trips[index].getExpenses())
     {
-        std::string msg = expense.first + " : " + std::to_string(expense.second);
+        std::string msg = expense.first + " : $" + std::to_string(expense.second);
         displayMessage(msg, true);
     }
     system("pause");
+}
+
+int Driver::displayAllTrips() {
+    if(trips.empty()) return -1;
+    char userInput;
+    int index;
+
+    for(int i = 0; i < trips.size(); ++i)
+    {
+        std::string msg = std::to_string(i+1) +". " +  trips[i].getName();
+        displayMessage(msg, true);
+    }
+
+    do{
+        displayMessage("Enter trip number:");
+        std::cin >> userInput;
+        std::cin.clear();
+        std::cin.ignore(1000,'\n');
+        index = userInput - '0';
+    }while(index <= 0 || index > trips.size());
+
+    return index-1;
 }
