@@ -103,6 +103,7 @@ void Driver::displayTripMain(int index) {
                 break;
             case '2':
                 displayMessage("VIEWING EXPENSES\n");
+                displayExpenses(index);
                 break;
             case '3':
                 open = false;
@@ -137,4 +138,14 @@ void Driver::addExpense(int index) {
     catch (std::invalid_argument& e) {
         displayMessage(e.what());
     }
+}
+
+void Driver::displayExpenses(int index) {
+    if(index < 0 || index >= trips.size()) throw std::invalid_argument("Invalid index entered");
+    for(auto expense: trips[index].getExpenses())
+    {
+        std::string msg = expense.first + " : " + std::to_string(expense.second);
+        displayMessage(msg, true);
+    }
+    system("pause");
 }

@@ -55,6 +55,14 @@ private:
      * @throws invalid_argument if {@code index < 0 || index >= trips.size()}
      */
     void addExpense(int index);
+
+    /**
+     * Displays the list of expenses to the user for a specific trip
+     *
+     * @param index the index in the list of trips vector
+     * @throws invalid_argument if {@code index < 0 || index >= trips.size()}
+     */
+    void displayExpenses(int index);
 public:
     /**
      * Starts the driver and handles user interaction
